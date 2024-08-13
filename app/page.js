@@ -1,7 +1,6 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-const Background = dynamic(() => import('./components/background'),{ssr:false})
+import Onboarding from "./components/onboarding";
+import Background from "./components/background";
 
 export default function Home() {
   return (
@@ -22,6 +21,7 @@ export default function Home() {
       }}>
         Click Me
       </button> */}
+      <Onboarding/>
     </div>
   );
 }
