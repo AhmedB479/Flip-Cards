@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div style={{ position: 'relative', zIndex: '1' }}>
       <Background />
-      <button style={{
+      {/* <button style={{
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -21,7 +21,7 @@ export default function Home() {
         zIndex: '2' // Ensure the button is on top of the background
       }}>
         Click Me
-      </button>
+      </button> */}
     </div>
   );
 }
