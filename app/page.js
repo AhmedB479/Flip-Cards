@@ -1,5 +1,7 @@
 import Image from "next/image";
-import Background from "./components/background";
+import dynamic from "next/dynamic";
+
+const Background = dynamic(() => import('./components/background'),{ssr:false})
 
 export default function Home() {
   return (
