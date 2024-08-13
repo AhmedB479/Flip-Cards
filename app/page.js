@@ -5,7 +5,7 @@ import Background from "./components/background";
 export default function Home() {
   return (
     <div style={{ position: 'relative', zIndex: '1' }}>
-      <Background />
+      {/* <Background /> */}
       {/* <button style={{
         position: 'absolute',
         top: '50%',

@@ -4,6 +4,19 @@
     width: 100%;               /* Full width of the viewport */
   }
   
+  .welcome {
+    font-size: 20px;
+    padding-top: 10vh; /* This adds some space from the top */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 80vh; /* Ensures it takes up most of the viewport height */
+    text-align: center; /* Centers text within the element */
+    margin-top: 2rem;
+    margin-left: 40rem;
+    color: white; /* Additional space from the top */
+  }
+  
   .navbar-content {
     max-width: 100%;           /* Ensure content stretches to full width */
     padding-top: 1rem;
@@ -35,7 +48,7 @@
   }
   
   .menu-icon {
-    display: none;
+    display: block;
     border: 2px solid rgba(255, 255, 255, 0.5);
     padding: 0.25rem;
     height: 2.5rem;
@@ -76,4 +89,3 @@
       display: none;
     }
   }
-  
