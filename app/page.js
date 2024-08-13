@@ -1,12 +1,11 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import Onboarding from "./components/onboarding";
-
+import Background from "./components/background";
 
 export default function Home() {
   return (
     <div style={{ position: 'relative', zIndex: '1' }}>
-      <Onboarding />
+      {/* <Background /> */}
       {/* <button style={{
         position: 'absolute',
         top: '50%',
@@ -22,6 +21,7 @@ export default function Home() {
       }}>
         Get Started
       </button> */}
+      <Onboarding/>
     </div>
   );
 }
