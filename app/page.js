@@ -6,7 +6,7 @@ const Background = dynamic(() => import('./components/background'),{ssr:false})
 export default function Home() {
   return (
     <div>
-      <Background />
+      <Background/>
     </div>
   );
 }

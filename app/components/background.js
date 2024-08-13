@@ -315,7 +315,7 @@ animate();
 
   return (
     <div>
-      <canvas ref={myRef} style={{ height: '100vh', width: '100%' }} />
+      <canvas ref={myRef} style={{position:'fixed', height: '100vh', width: '100%' }} />
     </div>
   );
 }
