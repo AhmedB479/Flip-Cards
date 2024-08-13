@@ -1,0 +1,78 @@
+/* Styling for Navbar */
+
+.navbar-container {
+  width: 100%;            /* Full width of the viewport */
+}
+
+.navbar-content {
+  max-width: 100%;           /* Ensure content stretches to full width */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: black;
+  opacity: 0.6;
+  display: inline-flex;
+  align-items: center;
+  gap: 149.6vh;
+  justify-content: space-between; /* Space between logo and links */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.logo {
+  border-radius: 0.75rem;
+  box-shadow: 
+    0 0 10px rgba(213, 156, 218, 0.5),
+    0 0 20px rgba(41, 141, 255, 0.4),
+    0 0 30px rgba(255, 253, 128, 0.3),
+    0 0 40px rgba(248, 154, 191, 0.2),
+    0 0 50px rgba(252, 214, 255, 0.1);
+}
+
+.logo-image {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+}
+
+.menu-icon {
+  display: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.25rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.menu-image {
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  display: none;
+}
+
+.navbar-link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+@media screen and (min-width: 640px) {
+  .navbar-links {
+    display: flex;
+  }
+  .menu-icon {
+    display: none;
+  }
+}

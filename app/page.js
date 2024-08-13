@@ -1,12 +1,12 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import Onboarding from "./components/onboarding";
 
-const Background = dynamic(() => import('./components/background'),{ssr:false})
 
 export default function Home() {
   return (
     <div style={{ position: 'relative', zIndex: '1' }}>
-      <Background />
+      <Onboarding />
       {/* <button style={{
         position: 'absolute',
         top: '50%',
@@ -20,7 +20,7 @@ export default function Home() {
         cursor: 'pointer',
         zIndex: '2' // Ensure the button is on top of the background
       }}>
-        Click Me
+        Get Started
       </button> */}
     </div>
   );
