@@ -1,16 +1,22 @@
+'use client';
 import * as THREE from 'three';
-import React from 'react';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Correct import
+import React, { useRef, useEffect } from 'react';
+import {TweenMax, Power0, Power1} from 'gsap/gsap-core';
 
 export default function Background() {
+  const myRef = useRef(null); // Create a ref
+  const sizes = useRef({ width: window.innerWidth, height: window.innerHeight });
+  const camera = useRef(new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 500 ));
 
-  useEffect(() => {
-    const sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
+useEffect(() => {
+  if (myRef.current){
 // Three JS Template
 //----------------------------------------------------------------- BASIC parameters
-var renderer = new THREE.WebGLRenderer({antialias:true});
+const renderer = new THREE.WebGLRenderer({
+  canvas: myRef.current,
+  antialias: true,
+});
 renderer.setSize( window.innerWidth, window.innerHeight );
 
 if (window.innerWidth > 800) {
@@ -45,7 +51,7 @@ var uSpeed = 0.001;
 
 //----------------------------------------------------------------- FOG background
 
-var setcolor = 0xF02050;
+var setcolor = 0x7732a8;
 //var setcolor = 0xF2F111;
 //var setcolor = 0xFF6347;
 
@@ -74,26 +80,24 @@ function setTintColor() {
 //----------------------------------------------------------------- CREATE City
 
 function init() {
-  var segments = 2;
+  var segments = 1;
   for (var i = 1; i<100; i++) {
-    var geometry = new THREE.CubeGeometry(1,0,0,segments,segments,segments);
+    var geometry = new THREE.BoxGeometry(1,1,1,segments,segments,segments);
+    geometry.computeVertexNormals();
     var material = new THREE.MeshStandardMaterial({
       color:setTintColor(),
       wireframe:false,
       //opacity:0.9,
       //transparent:true,
-      //roughness: 0.3,
-      //metalness: 1,
-      shading: THREE.SmoothShading,
-      //shading:THREE.FlatShading,
+      roughness: 10,
+      metalness: 0.5,
       side:THREE.DoubleSide});
     var wmaterial = new THREE.MeshLambertMaterial({
       color:0xFFFFFF,
       wireframe:true,
       transparent:true,
       opacity: 0.03,
-      side:THREE.DoubleSide/*,
-      shading:THREE.FlatShading*/});
+      side:THREE.DoubleSide});
 
     var cube = new THREE.Mesh(geometry, material);
     var wire = new THREE.Mesh(geometry, wmaterial);
@@ -127,7 +131,7 @@ function init() {
   };
   //----------------------------------------------------------------- Particular
   
-  var gmaterial = new THREE.MeshToonMaterial({color:0xFFFF00, side:THREE.DoubleSide});
+  var gmaterial = new THREE.MeshToonMaterial({color:0x32a895, side:THREE.DoubleSide});
   var gparticular = new THREE.CircleGeometry(0.01, 3);
   var aparticular = 5;
   
@@ -138,13 +142,13 @@ function init() {
     smoke.add(particular);
   };
   
-  var pmaterial = new THREE.MeshPhongMaterial({
-    color:0x000000,
-    side:THREE.DoubleSide,
+  var pmaterial = new THREE.MeshStandardMaterial({
+    color: 0x000000,
+    side: THREE.DoubleSide,
     roughness: 10,
     metalness: 0.6,
-    opacity:0.9,
-    transparent:true});
+    opacity: 0.9
+  });
   var pgeometry = new THREE.PlaneGeometry(60,60);
   var pelement = new THREE.Mesh(pgeometry, pmaterial);
   pelement.rotation.x = -90 * Math.PI / 180;
@@ -210,7 +214,7 @@ city.add(smoke);
 city.add(town);
 
 //----------------------------------------------------------------- GRID Helper
-var gridHelper = new THREE.GridHelper( 60, 120, 0xFF0000, 0x000000);
+var gridHelper = new THREE.GridHelper( 60, 120, 0xa8329e, 0x000000);
 city.add( gridHelper );
 
 //----------------------------------------------------------------- CAR world
@@ -221,7 +225,7 @@ var generateCar = function() {
 
 var createCars = function(cScale = 2, cPos = 20, cColor = 0xFFFF00) {
   var cMat = new THREE.MeshToonMaterial({color:cColor, side:THREE.DoubleSide});
-  var cGeo = new THREE.CubeGeometry(1, cScale/40, cScale/40);
+  var cGeo = new THREE.BoxGeometry(1, cScale/40, cScale/40);
   var cElem = new THREE.Mesh(cGeo, cMat);
   var cAmp = 3;
   
@@ -287,13 +291,32 @@ var animate = function() {
   camera.lookAt(city.position);
   renderer.render( scene, camera );  
 }
+
 //----------------------------------------------------------------- START functions
 generateLines();
 init();
 animate();
-}, []);
+    // Resize event listener
+    function onResize() {
+      sizes.current.width = window.innerWidth;
+      sizes.current.height = window.innerHeight;
+      camera.position.aspect = sizes.current.width / sizes.current.height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(sizes.current.width * devicePixelRatio, sizes.current.height * devicePixelRatio, false);
+    }
 
-return (
-  <canvas id="bg" style={{ background: 'black' }}></canvas>
-);
+    window.addEventListener('resize', onResize);
+
+    // Clean up function
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }
+  }, []);
+
+  return (
+    <div>
+      <canvas ref={myRef} style={{ height: '100vh', width: '100%' }} />
+    </div>
+  );
 }
