@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
-import Background from "./components/background";
 const Background = dynamic(() => import("./background"), { ssr: false });
 
 const inter = Inter({ subsets: ["latin"] });
