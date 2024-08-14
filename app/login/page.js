@@ -21,6 +21,7 @@ import Paper from "@mui/material/Paper";
 import { useRouter } from "next/navigation";
 import LinearProgress from "@mui/material/LinearProgress";
 import Image from "next/image";
+const Background = dynamic(() => import("../components/background"), { ssr: false });
 
 export default function Login() {
   const [email, setEmail] = useState("");
