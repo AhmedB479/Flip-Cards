@@ -4,7 +4,7 @@ import Background from "./components/background";
 
 export default function Home() {
   return (
-    <div style={{ position: 'relative', zIndex: '1' }}>
+    <div style={{ position: "relative", zIndex: "1" }}>
       {/* <Background /> */}
       {/* <button style={{
         position: 'absolute',
@@ -21,7 +21,7 @@ export default function Home() {
       }}>
         Get Started
       </button> */}
-      <Onboarding/>
+      <Onboarding />
     </div>
   );
 }

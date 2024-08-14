@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Background from "./components/background";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,8 +11,28 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    // <html lang="en">
+    //   <body className={inter.className}>{children}</body>
+    // </html>
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <div
+        style={{
+          position: "fixed",
+          zIndex: "1",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Background />
+        <main
+          style={{
+            position: "fixed",
+            zIndex: "2",
+          }}
+        >
+          {children}
+        </main>
+      </div>
     </html>
   );
 }
