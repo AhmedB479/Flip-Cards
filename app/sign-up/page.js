@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 const Background = dynamic(() => import("../components/background"), { ssr: false });
 
 
