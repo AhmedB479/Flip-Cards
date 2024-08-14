@@ -1,9 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Navbar from "./navbar";
-import dynamic from "next/dynamic";
 import { Box, Button } from "@mui/material";
-const Background = dynamic(() => import("./background"), { ssr: false });
 
 export default function Onboarding() {
   const [hover, setHover] = useState(false);
