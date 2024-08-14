@@ -3,8 +3,9 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // Correct import
 import React, { useRef, useEffect } from 'react';
 import {TweenMax, Power0, Power1} from 'gsap/gsap-core';
+import dynamic from "next/dynamic";
 
-export default function Background() {
+function Background() {
   const myRef = useRef(null); // Create a ref
   const sizes = useRef({ width: window.innerWidth, height: window.innerHeight });
   const camera = useRef(new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 500 ));
@@ -318,4 +319,5 @@ animate();
       <canvas ref={myRef} style={{position:'fixed', height: '100vh', width: '100%' }} />
     </div>
   );
-}
+};
+export default dynamic(() => Promise.resolve(Background), { ssr: false });
