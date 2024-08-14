@@ -21,7 +21,6 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Background from "../components/background";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
