@@ -20,7 +20,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { useRouter } from "next/navigation";
 import LinearProgress from "@mui/material/LinearProgress";
-import Background from "../components/background";
 import Image from "next/image";
 
 export default function Login() {
