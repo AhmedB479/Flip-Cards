@@ -21,6 +21,8 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+const Background = dynamic(() => import("../components/background"), { ssr: false });
+
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
