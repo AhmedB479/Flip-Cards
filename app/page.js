@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Onboarding from "./components/onboarding";
-import Background from "./components/background";
 
 export default function Home() {
   return (
